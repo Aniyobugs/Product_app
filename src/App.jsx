@@ -6,6 +6,8 @@ import Signup from './components/Signup'
 import Login from './components/Login'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Maain from './components/Maain'
+import Admin from './components/Admin'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,10 +16,11 @@ function App() {
     <>
      {/* <Signup/>
      <Login/> */}
-     <Navbar/>
+     {/* <Navbar/> */}
      <Routes >
       <Route path ='/' element={<Signup/>}/>
       <Route path ='/L' element={<Login/>}/>
+      <Route path ='/admin' element={<Maain child={<Admin/>}/>}/>
       </Routes>
     </>
   )

@@ -9,6 +9,7 @@ const Navbar = () => {
     <div>
          <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
+        <AppBar color='secondary'>
         <Toolbar>
           <IconButton
             size="large"
@@ -20,12 +21,13 @@ const Navbar = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Employee Dashboard
+         SLIPCART
           </Typography>
           <Button><Link to={'/'} style={{textDecoration:'none',color:'white'}}>SIGN UP</Link></Button>
           <Button><Link to={'/L'} style={{textDecoration:'none',color:'white'}}>LOGIN</Link></Button>
           
         </Toolbar>
+      </AppBar>
       </AppBar>
     </Box>
       

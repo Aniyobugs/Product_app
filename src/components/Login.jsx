@@ -1,9 +1,11 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
+import axios from 'axios'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
     var[input,setInput] =useState({})
+    var baseurl = import.meta.env.VITE_API_BASE_URL;
         const inpuHandler =(e)=>{
             // console.log(e.target.value);
             setInput({...input,[e.target.name]:e.target.value})
@@ -11,6 +13,18 @@ const Login = () => {
             
         }
         const addhandler=()=>
+          axios
+      .post(`${baseurl}/api/login`, input)
+      .then((res) => {
+        console.log(res);
+        alert(res.data.message);
+    
+      })  
+      .catch((error) => {
+        console.log(error);
+      });
+          
+
             console.log("Clicked")
     
   return (
