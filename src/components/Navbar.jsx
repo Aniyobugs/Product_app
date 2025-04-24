@@ -20,8 +20,8 @@ const Navbar = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-         SLIPCART
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, }}>
+         <b>SLIPCART</b>
           </Typography>
           <Button><Link to={'/'} style={{textDecoration:'none',color:'white'}}>SIGN UP</Link></Button>
           <Button><Link to={'/L'} style={{textDecoration:'none',color:'white'}}>LOGIN</Link></Button>

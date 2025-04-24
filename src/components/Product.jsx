@@ -1,10 +1,39 @@
-import { Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import React from 'react'
 
 const Product = () => {
   return (
     <div>
-            <Typography variant='h1' sx={{color:'black'}}>hi</Typography>
+            {/* <Typography variant='h1' sx={{color:'black'}}>hi</Typography> */}
+            <Grid  container spacing={2}>
+        {data.map((value,i)=>{
+            return(
+                <Grid size={{xs:12,md:3}}>
+                <Card sx={{ maxWidth: 400 }}>
+                <CardMedia
+                  sx={{ height: 500 }}
+                  image={value.image} 
+                  title="green iguana"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    {value.title}
+                  </Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                   {value.des}
+                  </Typography>
+                </CardContent>
+                <CardActions>
+                  <Button variant='contained' color='green' size="small">Share</Button>
+                  <Button variant='contained' color='green' size="small">Learn More</Button>
+                </CardActions>
+              </Card>
+              </Grid>
+
+            )
+        })}
+  
+  </Grid>
 
     </div>
   )
