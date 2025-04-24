@@ -1,11 +1,12 @@
 import { Box, Button, TextField, Typography } from '@mui/material'
 import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 
 const Login = () => {
     var[input,setInput] =useState({})
     var baseurl = import.meta.env.VITE_API_BASE_URL;
+    var navigate=useNavigate();
         const inpuHandler =(e)=>{
             // console.log(e.target.value);
             setInput({...input,[e.target.name]:e.target.value})
@@ -16,8 +17,16 @@ const Login = () => {
           axios
       .post(`${baseurl}/api/login`, input)
       .then((res) => {
-        console.log(res);
-        alert(res.data.message);
+        console.log(res.data);
+        sessionStorage.setItem("role",res.data.user.role)
+        if(res.status===200){
+          alert(res.data.message)
+          if(res.data.user.role=='admin'){
+            navigate('/admin')
+          }else{
+            navigate('/product')
+        }
+      }
     
       })  
       .catch((error) => {
@@ -44,7 +53,7 @@ const Login = () => {
         label='Email'
         variant='outlined'
         margin='normal'
-        name='email'
+        name='ename'
         
         onChange={inpuHandler}
         >
