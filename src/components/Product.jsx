@@ -1,7 +1,19 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Product = () => {
+  // const[products,setProducts]=useState([]);
+  // useEffect(()=>{
+  //   axios.get("http://localhost:3000/p/product")
+  //   .then((response)=>{
+  //     setProducts(response.data);
+  //   })
+  //   .catch((err)=>{
+  //     console.error('Error Fetching products:')
+  //   }
+  //   ))
+  //   })
+  // })
   return (
     <div>
             {/* <Typography variant='h1' sx={{color:'black'}}>hi</Typography> */}
