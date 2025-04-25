@@ -9,7 +9,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const [input, setProductdata] = useState({
@@ -57,6 +57,8 @@ const submithandler = (e) => {
     });
 };
   return (
+  
+ 
     <Box
       sx={{
         maxWidth: 500,
@@ -154,6 +156,12 @@ const submithandler = (e) => {
         >
           Submit
         </Button>
+        <br /><br />
+      <Button variant="contained">
+    <Link to="/pd" style={{ textDecoration: "none", color: "white" }}>
+      Product Details
+    </Link>
+  </Button>
       </form>
     </Box>
   )

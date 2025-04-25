@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Maain from './components/Maain'
 import Admin from './components/Admin'
 import Product from './components/Product'
+import ProductDetails from './components/ProductDetails'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function App() {
       <Route path ='/L' element={<Login/>}/>
       <Route path ='/admin' element={<Maain child={<Admin/>}/>}/>
       <Route path ='/product' element={<Maain child={<Product/>}/>}/>
+      <Route path ='/pd' element={<Maain child={<ProductDetails/>}/>}/>
       </Routes>
     </>
   )
