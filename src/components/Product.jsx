@@ -1,13 +1,16 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const Product = () => {
-  const[products,setProducts]=useState([]);
+  const[data,setProducts]=useState([]);
+  var baseurl=import.meta.env.VITE_API_BASE_URL;
   useEffect(() => {
     axios
-      .get("http://localhost:4000/p/product") 
-      .then((response) => {
-        setProducts(response.data);
+      .get(`${baseurl}/p`) 
+      .then((res) => {
+        console.log(res)
+        setProducts(res.data);
       })
       .catch((error) => {
         console.error('Error fetching products:', error);
@@ -17,36 +20,36 @@ const Product = () => {
   return (
     <div>
             {/* <Typography variant='h1' sx={{color:'black'}}>hi</Typography> */}
-            <Grid  container spacing={2}>
-        {data.map((value,i)=>{
-            return(
-                <Grid size={{xs:12,md:3}}>
-                <Card sx={{ maxWidth: 400 }}>
+            <Grid container spacing={2} sx={{marginTop:2}}>
+        {data.map((value, index) => {
+          return (
+            <Grid size={4} key={index}>
+              <Card variant="outlined">
                 <CardMedia
-                  sx={{ height: 500 }}
-                  image={value.image} 
-                  title="green iguana"
+                  sx={{ height: 250 }}
+                  image={`${baseurl}/uploads/${value.image[0]}`}
+                  title={value.pname}
                 />
                 <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {value.title}
+                  <Typography variant="h5" component="div">
+                    Name:{value.pname}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                   {value.des}
+                  <Typography variant="h5" component="div">
+                    Price:{value.price}
+                  </Typography>
+                  <Typography variant="h5" component="div">
+                    Descripation:{value.description}
+                  </Typography>
+                  <Typography variant="h5" component="div">
+                    Stock:{value.stock}
                   </Typography>
                 </CardContent>
-                <CardActions>
-                  <Button variant='contained' color='green' size="small">Share</Button>
-                  <Button variant='contained' color='green' size="small">Learn More</Button>
-                </CardActions>
               </Card>
-              </Grid>
-
-            )
+            </Grid>
+          );
         })}
-  
-  </Grid>
-
+      </Grid>
+      
     </div>
   )
 }

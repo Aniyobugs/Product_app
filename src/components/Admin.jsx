@@ -50,7 +50,7 @@ const submithandler = (e) => {
     .then((res) => {
       console.log(res.data);
       alert(res.data.message)
-      navigate('')
+      navigate('/product')
     })  
     .catch((err) => {
       console.log(err);  
