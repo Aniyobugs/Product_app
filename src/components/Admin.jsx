@@ -31,28 +31,30 @@ const Admin = () => {
   //   setInput((prev) => ({ ...prev, available: !prev.available }));
   // };
 
-  const submithandler = (e) => {
-    const formData= new FormData();
-    formData.append('pname',input.pname)
-    formData.append('price',input.price)
-    formData.append('stock',input.stock)
-    formData.append('description',input.description)
-    input.image.forEach((file)=>{
-      formData.append("image",file)
-    })
-    axios.post(`${baseurl}/p`,formData)
-    .then((res)=>{
+
+const submithandler = (e) => {
+  
+
+  const formData = new FormData();
+  formData.append('pname', input.pname);
+  formData.append('price', input.price);
+  formData.append('stock', input.stock);
+  formData.append('description', input.description);
+
+  input.image.forEach((file) => {
+    formData.append('image', file);
+  });
+
+  axios
+    .post(`${baseurl}/p`, formData)
+    .then((res) => {
       console.log(res.data);
       alert(res.data.message)
-
-    })
-    .catch((error)=>{
-      console.log(error);
-    })
-    // console.log('Submitted:', input);
-    // TODO: Add your API call here
-  };
-
+    })  
+    .catch((err) => {
+      console.log(err);  
+    });
+};
   return (
     <Box
       sx={{
@@ -143,7 +145,7 @@ const Admin = () => {
 
         <Button
           fullWidth
-          type='submit'
+   
           variant='contained'
           color='secondary'
           sx={{ mt: 3 }}
@@ -153,7 +155,7 @@ const Admin = () => {
         </Button>
       </form>
     </Box>
-  );
-};
+  )
+}
 
-export default Admin;
+export default Admin
