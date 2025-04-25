@@ -2,18 +2,18 @@ import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } f
 import React, { useEffect, useState } from 'react'
 
 const Product = () => {
-  // const[products,setProducts]=useState([]);
-  // useEffect(()=>{
-  //   axios.get("http://localhost:3000/p/product")
-  //   .then((response)=>{
-  //     setProducts(response.data);
-  //   })
-  //   .catch((err)=>{
-  //     console.error('Error Fetching products:')
-  //   }
-  //   ))
-  //   })
-  // })
+  const[products,setProducts]=useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:4000/p/product") 
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching products:', error);
+      });
+  },[]);
+
   return (
     <div>
             {/* <Typography variant='h1' sx={{color:'black'}}>hi</Typography> */}
