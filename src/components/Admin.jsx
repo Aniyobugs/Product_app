@@ -7,6 +7,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import axios from 'axios';
 import { useState } from 'react';
 
 const Admin = () => {
@@ -15,7 +16,7 @@ const Admin = () => {
     price: '',
     description: '',
     stock: '',
-    available: true,
+    image :[]
   });
   var baseurl=import.meta.env.VITE_API_BASE_URL;
 
@@ -34,10 +35,10 @@ const Admin = () => {
     formData.append('price',input.price)
     formData.append('stock',input.stock)
     formData.append('description',input.description)
-    input.images.forEach((file)=>{
-      formData.append("images",file)
+    input.image.forEach((file)=>{
+      formData.append("image",file)
     })
-    // axios.post(`${baseurl}`,formData)
+    axios.post(`${baseurl}`,formData)
     // console.log('Submitted:', input);
     // TODO: Add your API call here
   };
@@ -119,9 +120,9 @@ const Admin = () => {
           <input type='file'
           hidden
           multiple
-          accept='images/*'
+          accept='image/*'
           onChange={(e)=>{
-            setProductdata({...productData,
+            setProductdata({...input,
               image:Array.from(e.target.files)
             })
           }}
