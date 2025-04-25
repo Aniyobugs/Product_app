@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
   const [input, setProductdata] = useState({
@@ -19,6 +20,7 @@ const Admin = () => {
     image :[]
   });
   var baseurl=import.meta.env.VITE_API_BASE_URL;
+  var navigate=useNavigate();
 
   const inputHandler = (e) => {
     setProductdata({...input,[e.target.name]:e.target.value})
@@ -38,7 +40,15 @@ const Admin = () => {
     input.image.forEach((file)=>{
       formData.append("image",file)
     })
-    axios.post(`${baseurl}`,formData)
+    axios.post(`${baseurl}/p`,formData)
+    .then((res)=>{
+      console.log(res.data);
+      alert(res.data.message)
+
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
     // console.log('Submitted:', input);
     // TODO: Add your API call here
   };
