@@ -17,6 +17,7 @@ const Admin = () => {
     stock: '',
     available: true,
   });
+  var baseurl=import.meta.env.VITE_API_BASE_URL;
 
   const inputHandler = (e) => {
     setProductdata({...input,[e.target.name]:e.target.value})
@@ -30,14 +31,14 @@ const Admin = () => {
   const submithandler = (e) => {
     const formData= new FormData();
     formData.append('pname',input.pname)
-    formData.append('price',input.pname)
-    formData.append('stock',input.pname)
-    formData.append('description',input.pname)
+    formData.append('price',input.price)
+    formData.append('stock',input.stock)
+    formData.append('description',input.description)
     input.images.forEach((file)=>{
       formData.append("images",file)
     })
-    axios.post(`${baseurl}`,formData)
-    console.log('Submitted:', input);
+    // axios.post(`${baseurl}`,formData)
+    // console.log('Submitted:', input);
     // TODO: Add your API call here
   };
 
@@ -57,7 +58,7 @@ const Admin = () => {
         <b>Add Product</b>
       </Typography>
 
-      <form onSubmit={submithandler}>
+      <form>
         <TextField
           fullWidth
           label='Product Name'
